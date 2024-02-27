@@ -41,7 +41,7 @@ def connect_to_mongo():
         yield db
     except ServerSelectionTimeoutError as err:
         raise HTTPException(status_code=500, detail="Failed to connect to database")
-
+    
 
 # Routes
 @app.get("/")
