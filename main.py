@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Depends, Query
+from fastapi import FastAPI, HTTPException, Depends
 from pydantic import BaseModel
 from pymongo import MongoClient
 from pymongo.errors import ServerSelectionTimeoutError
@@ -50,17 +50,10 @@ async def read_root():
 
 
 @app.get("/users/", response_model=List[User])
-async def get_users(connect_timeout: int = Query(5000),
-                    db=Depends(connect_to_mongo)):
-    try:
-        client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=connect_timeout)
-        db = client[MONGO_DB]
-
-        users_data = db[COLLECTION_NAME].find({}, {"_id": 0})
-        users = [User(**user) for user in users_data]
-        return users
-    except ServerSelectionTimeoutError as err:
-        raise HTTPException(status_code=500, detail="Failed to connect to database")
+async def get_users(db=Depends(connect_to_mongo)):
+    users_data = db[COLLECTION_NAME].find({}, {"_id": 0}) 
+    users = [User(**user) for user in users_data]
+    return users
 
 
 if __name__ == "__main__":
