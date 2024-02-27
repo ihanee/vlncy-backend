@@ -19,7 +19,7 @@ app.add_middleware(
 username = quote_plus('ajmalhanee')
 password = quote_plus('@$$B!t3OOF')
 
-MONGO_URI = f"mongodb+srv://{username}:{password}@cluster0.7v4hno5.mongodb.net/?ssl=true&connectTimeoutMS=30000"
+MONGO_URI = f"mongodb+srv://{username}:{password}@cluster0.7v4hno5.mongodb.net/"
 MONGO_DB = "vlncy"
 COLLECTION_NAME = "users"
 
@@ -49,7 +49,6 @@ async def read_root():
     return {"message": "Welcome to your FastAPI MongoDB app!"}
 
 
-@app.get("/users/", response_model=List[User])
 @app.get("/users/", response_model=List[User])
 async def get_users(connect_timeout: int = Query(5000),
                     db=Depends(connect_to_mongo)):
