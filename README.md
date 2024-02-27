@@ -13,16 +13,44 @@ To run this project locally, ensure you have Python installed. Then, follow thes
 
    ```
 
-2. Navigate to the project directory: cd vlncy-backend
+2. Navigate to the project directory:
 
-3. Create a virtual environment: python -m venv venv
+    ```bash 
+       cd vlncy-backend
+
+    ```    
+
+3. Create a virtual environment: 
+
+   ```bash 
+      python -m venv venv
+
+   ```
 
 4. Activate the virtual environment:
-   On Windows: venv\Scripts\activate
-   On macOS and Linux: source venv/bin/activate
+
+   ### On Windows: 
+   ```bash
+     venv\Scripts\activate
+     
+   ``` 
+
+   ### On macOS and Linux: 
+     ```bash
+       source venv/bin/activate
+
+     ```
 
 5. Install the required dependencies:
-   pip install -r requirements.txt
+
+   ```bash
+     pip install -r requirements.txt
+   
+   ```
 
 6. To start the FastAPI server, run the following command:
-   uvicorn main:app --reload
+
+   ```bash
+     uvicorn main:app --reload
+   
+   ```
