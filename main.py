@@ -19,7 +19,7 @@ app.add_middleware(
 username = quote_plus('ajmalhanee')
 password = quote_plus('@$$B!t3OOF')
 
-MONGO_URI = f"mongodb+srv://{username}:{password}@cluster0.7v4hno5.mongodb.net/"
+MONGO_URI = f"mongodb+srv://{username}:{password}@cluster0.7v4hno5.mongodb.net/?ssl=true"
 MONGO_DB = "vlncy"
 COLLECTION_NAME = "users"
 
